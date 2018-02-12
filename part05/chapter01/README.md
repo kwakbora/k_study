@@ -1,3 +1,5 @@
+###  함수단위 코딩예제 리터럴 방식으로 클래스를 만들어보자!!
+	
 	// 탭메뉴 관련 변수
 	var $tabMenu =null;
 	var $menuItems=null;
