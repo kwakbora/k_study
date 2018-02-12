@@ -38,3 +38,74 @@
 	}
 
 </script>
+
+------
+
+###  리터럴방식 적용 예
+
+```javascript
+<script>
+$(document).ready(function(){
+   tabMenu1.init();
+   tabMenu1.initEvent();
+});
+   //클래스 생성
+var tabMenu1 = {
+   $tabMenu : null,  //프로퍼티 생성 - (,) 로 구분 / 내부는 (:) 으로 구분
+   $menuItems : null,
+   $setmenu : null,
+
+   // 함수를 메서드로 만든다.
+   //요소 초기화
+   init:function(){
+      this.$tabMenu = $("#tabMenu1");
+      this.$menuItems = this.$tabMenu.find("li");
+   },
+   initEvent:function(){
+      var objThis = this;
+      this.$menuItems.on("click",function(){
+         objThis.setSelectItem($(this));
+      });
+   },
+   setSelectItem:function($menuItems){
+      if(this.$setmenu){
+         this.$setmenu.removeClass('select');
+      }
+
+      this.$setmenu = $menuItems;
+      this.$setmenu.addClass('select');
+   },
+
+
+}
+var tabMenu1 = {
+   $tabMenu : null,  //프로퍼티 생성 - (,) 로 구분 / 내부는 (:) 으로 구분
+   $menuItems : null,
+   $setmenu : null,
+
+   // 함수를 메서드로 만든다.
+   //요소 초기화
+   init:function(){
+      this.$tabMenu = $("#tabMenu1");
+      this.$menuItems = this.$tabMenu.find("li");
+   },
+   initEvent:function(){
+      var objThis = this;
+      this.$menuItems.on("click",function(){
+         objThis.setSelectItem($(this));
+      });
+   },
+   setSelectItem:function($menuItems){
+      if(this.$setmenu){
+         this.$setmenu.removeClass('select');
+      }
+
+      this.$setmenu = $menuItems;
+      this.$setmenu.addClass('select');
+   },
+
+
+}
+</script>
+```
+
