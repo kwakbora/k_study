@@ -68,7 +68,34 @@
 
 
 	}
+	var tabMenu1 = {
+		$tabMenu : null,  //프로퍼티 생성 - (,) 로 구분 / 내부는 (:) 으로 구분
+		$menuItems : null,
+		$setmenu : null,
 
+		// 함수를 메서드로 만든다.
+		//요소 초기화
+		init:function(){
+			this.$tabMenu = $("#tabMenu1");
+			this.$menuItems = this.$tabMenu.find("li");
+		},
+		initEvent:function(){
+			var objThis = this;
+			this.$menuItems.on("click",function(){
+				objThis.setSelectItem($(this));
+			});
+		},
+		setSelectItem:function($menuItems){
+			if(this.$setmenu){
+				this.$setmenu.removeClass('select');
+			}
+
+			this.$setmenu = $menuItems;
+			this.$setmenu.addClass('select');
+		},
+
+
+	}
 	</script>
 </head>
 
@@ -82,6 +109,14 @@
 	<li class="menuitem5">airbnb</li>
 	<li class="menuitem6">path</li>
 </ul>
-
+<p style="margin-top:20px;">두 번째 탭메뉴</p>
+<ul class="tab-menu" id="tabMenu2">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
 </body>
 </html>
