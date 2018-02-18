@@ -87,7 +87,38 @@ greetings("kim") // 출력결과 : Hello kim
 
 
 ## 4. 리턴값이 있는 함수를 만들 수 있나요?
+```javascript
+def function(x):
+  a = 3
+  b = 5
+  y = a * x + b
+  return y                 // y 값을 돌려준다
+...
+c = function(10)
+c
+35
+```
 
+이렇게 만들어진 함수에 10이라는 인자를 넣어주면 함수는 35라는 값을 돌려준다. <br />따라서, 그 값을 다시 c라는 변수에 넣을 수도 있다.<br />
+
+만약, 함수를 정의할 때 return y 대신에 print(y)라고 썼다면 어떻게 될까요?
+
+
+
+```javascript
+def function2(x):
+  a = 3
+  b = 5
+  y = a * x + b
+
+print(y)                     // y 값을 출력한다
+...
+d = function2(10)
+35
+d
+```
+
+d = function2(10) 이라고 하면 함수가 실행되면서 35라는 값을 출력하지만 d에게 돌려주지는 못한다.<br />그래서 d를 찍어보면 아무 값도 나오지 않는다.
 
 ## 5. 중첩 함수를 이해하고 있나요?
 
