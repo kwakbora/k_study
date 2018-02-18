@@ -75,6 +75,15 @@ int main() {
    가능하면 스코프의 범위는 좁은 게 유지보수하기 편하다고 들었다.<br /><br />
    
 ## 3. 매개변수가 있는 함수를 만들 수 있나요?
+```javascript
+def greetings(name);
+	print("Hello", name)
+
+greetings("john") // 출력결과 : Hello john
+greetings("kim") // 출력결과 : Hello kim
+
+```
+함수의 매개변수는 딱히 개수 제한이 없습니다. 그러므로 프로그래머가 코드를 작성하면서 필요한 만큼 콤마로 구분하여 사용하면 됩니다.<br />
 
 
 ## 4. 리턴값이 있는 함수를 만들 수 있나요?
