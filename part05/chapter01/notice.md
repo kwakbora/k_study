@@ -260,6 +260,21 @@ $.ajax({
 
 
 ## 7. 클로저를 이해하고 있나요?
+클로저는 두개의 것(함수, 그 함수가 만들어진 환경)으로 이루어진 특별한 객체의 한 종류이다.<Br /> 
+환경이라 함은 클로저가 생성 될 때 그 범위 안에 있던 여러 지역 변수들로 이루어진다.
+
+```javascript
+function outer() {
+	var outerText =``"Is Closure !"``;
+	function inner() {
+		console.log(outerText);
+	}
+	return inner;
+}
+var myClosure = outer();
+myClosure(); // 클로저
+```
+
 
 
 ## 8. 함수를 이용해 간단한 탭메뉴를 만들 수 있나요?
