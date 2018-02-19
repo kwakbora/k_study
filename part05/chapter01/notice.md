@@ -145,8 +145,118 @@ d = function2(10) 이라고 하면 함수가 실행되면서 35라는 값을 출
 ```
 
 
-
 ## 6. 콜백 함수를 이해하고 있나요?
+**콜백 함수 :** 사용자에 의해 호출되는 것이 아닌 특정 함수에서 호출돼 필요시 코드 내에서 사용되는 함수.<br />
+일회성 함수의 경우 콜백 함수를 익명함수로 지정하여 사용 시 코드를 간결하게 할 수 있다.
+
+> ##### 이름이나 익명의 함수를 사용하라!
+
+함수를 정의해 해당 함수의 이름을 파라미터로 넘기는 방식입니다.<br />
+
+```javascript
+var allUserData = []; // 콘솔에 결과를 찍는 함수 
+
+function logStuff (userData) { 
+  if ( typeof userData === "string") { 
+    console.log(userData); 
+  } else if ( typeof userData === "object") { 
+    for (var item in userData) { 
+      console.log(item + ": " + userData[item]); 
+    } 
+  } 
+} // 두 개의 인자를 받아서 마지막에 콜백함수를 호출한다. 
+
+function getInput (options, callback) {
+  allUserData.push (options);
+  callback (options);
+} 
+getInput ({name:"Rich", speciality:"JavaScript"}, logStuff); 
+// name: Rich 
+// speciality: JavaScript
+
+// getInput 함수를 호출할 때 , 우리는 logStuf이라는 함수의 이름을 인자로 넘긴다. 
+// 그래서 logStuff 은 콜백함수가 되어 getInput이라는 함수의 내부에서 동작을 할것이다. 
+
+```
+
+
+
+> **콜백함수로 파라미터 전달(Pass Parameters to Callback Functions)**
+
+콜백함수가 실행이 될 때는 그냥 일반 함수와 동일하게 동작을 합니다. <br />그래서 우리는 콜백함수에 파라미터를 전달할 수가 있습니다. 우리는 파라미터로 콜백함수를 감싸고있는 함수 내부의 어떠한 프로퍼티라도 파라미터로 전달할 수가 있습니다.  <br />아래의 예제를 실행하면 options 파라미터를 콜백함수에 전달할수 있습니다. 전역변수와 지역변수를 파라미터로 전달할 수 있습니다.
+
+```javascript
+var allUserData = []; // 콘솔에 결과를 찍는 함수 
+
+function logStuff (userData) { 
+  if ( typeof userData === "string") { 
+    console.log(userData); 
+  } else if ( typeof userData === "object") { 
+    for (var item in userData) { 
+      console.log(item + ": " + userData[item]); 
+    } 
+  } 
+} // 두 개의 인자를 받아서 마지막에 콜백함수를 호출한다. 
+
+//전역변수 
+var generalLastName = "Clinton"; 
+
+function getInput (options, callback) { 
+  allUserData.push (options); 
+  // 전역변수를 콜백함수의 인자로 전달한다. 
+  callback (generalLastName, options); 
+}
+getInput ({name:"Rich", speciality:"JavaScript"}, logStuff);
+//Clinton
+```
+
+
+
+> **콜백함수가 실행 되기 전에 함수임을 명확하게 하기(Make Sure Callback is a Function Before Executing It)**
+
+콜백함수가 인자로 전달되어 함수의 내부에서 실행이 될 때 전달받은 인자가 함수인지를 명확하게 정의 하고 실행하는 것이 좋은 습관이다. 위의 함수를 고쳐보겠습니다.
+
+```javascript
+function getInput(options, callback) { 
+  allUserData.push(options); 
+  // callback 이 함수 인지를 확인합니다. 
+  if (typeof callback === "function") { 
+    // callback 이 함수인지를 확인 했으니까 함수호출합니다. 
+    callback(options); 
+  } 
+}
+```
+
+만약에 이러한 확인 작업이 없다면 callback파라메터를 넘기지 않거나 혹은 함수가 아닌 값을 넘기게 되는 경우에는 실행중에 에러가 발생하는 문제가 일어납니다.
+
+
+
+> **다중 콜백함수(Multiple Callback Functions Allowed)**
+
+우리는 여러 개의 콜백함수를 파라미터를 전달할 수 있습니다. 아래의 코드는 전형적인 jquery의 ajax 함수 들입니다.
+
+```javascript
+function successCallback() { 
+  // Do stuff before send 
+} 
+function successCallback() {
+  // Do stuff if success message received 
+} 
+function completeCallback() {
+  // Do stuff upon completion 
+} 
+function errorCallback() {
+  // Do stuff if error received 
+} 
+
+$.ajax({ 
+  url:"http://fiddle.jshell.net/favicon.png", 
+  success:successCallback, 
+  complete:completeCallback, 
+  error:errorCallback 
+});
+```
+
 
 
 ## 7. 클로저를 이해하고 있나요?
