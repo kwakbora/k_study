@@ -278,6 +278,8 @@ showName("Michael", "Jackson"); // Your name is Michael Jackson
 ```
 
 클로저는 외부함수가 리턴된 이후에도 외부함수의 변수에 접근할수 있습니다.
+
+```javascript
 function celebrityName(firstName) {
     var nameIntro = "This is celebrity is ";
     // 이 내부 함수는 외부함수의 변수와 파라미터에 접근할 수 있습니다.
@@ -291,6 +293,9 @@ var mjName = celebrityName("Michael"); // 여기서 celebrityName 외부함수�
 // 외부함수가 위에서 리턴된 후에, 클로저(lastName)가 호출됩니다.
 // 아직, 클로저는 외부함수의 변수와 파라미터에 접근 가능합니다.
 mjName("Jackson"); // This celebrity is Michael Jackson
+```
+
+
 
 클로저는 외부 함수의 변수에 대한 참조를 저장합니다.
 
