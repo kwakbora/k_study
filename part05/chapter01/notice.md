@@ -260,22 +260,39 @@ $.ajax({
 
 
 ## 7. 클로저를 이해하고 있나요?
-클로저는 두개의 것(함수, 그 함수가 만들어진 환경)으로 이루어진 특별한 객체의 한 종류이다.<Br /> 
-환경이라 함은 클로저가 생성 될 때 그 범위 안에 있던 여러 지역 변수들로 이루어진다.
+클로저는 외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수를 일컫습니다. 스코프 체인(scope chain)으로 표현되기도 합니다. 클로저는 세가지 스코프 체인을 가집니다: 클로저 자신에 대한 접근(자신의 블럭내에 정의된 변수), 외부 함수의 변수에 대한 접근, 그리고 전역 변수에 대한 접근. 이렇게 3단계로 구분할 수 있습니다.<br />
 
+내부 함수는 외부 함수의 변수뿐만 아니라 파라미터에도 접근할 수 있습니다. 단, 내부 함수는 외부 함수의 arguments 객체를 호출할 수는 없습니다. (하지만, 외부 함수의 파라미터는 직접 호출할 수 있습니다.)
+
+기본적인 클로저 예제:
 ```javascript
-function outer() {
-	var outerText =``"Is Closure !"``;
-	function inner() {
-		console.log(outerText);
-	}
-	return inner;
+function showName(firstName, lastName) {
+    var nameIntro = "Your name is ";
+    // 이 내부 함수는 외부함수의 변수뿐만 아니라 파라미터 까지 사용할 수 있습니다.
+    function makeFullName() {
+        return nameIntro + firstName + " " + lastName;
+    }
+    return makeFullName();
 }
-var myClosure = outer();
-myClosure(); // 클로저
+showName("Michael", "Jackson"); // Your name is Michael Jackson
 ```
 
+클로저는 외부함수가 리턴된 이후에도 외부함수의 변수에 접근할수 있습니다.
+function celebrityName(firstName) {
+    var nameIntro = "This is celebrity is ";
+    // 이 내부 함수는 외부함수의 변수와 파라미터에 접근할 수 있습니다.
+    function lastName(theLastName) {
+        return nameIntro + firstName + " " + theLastName;
+    }
+    return lastName;
+}
 
+var mjName = celebrityName("Michael"); // 여기서 celebrityName 외부함수가 리턴됩니다.
+// 외부함수가 위에서 리턴된 후에, 클로저(lastName)가 호출됩니다.
+// 아직, 클로저는 외부함수의 변수와 파라미터에 접근 가능합니다.
+mjName("Jackson"); // This celebrity is Michael Jackson
+
+클로저는 외부 함수의 변수에 대한 참조를 저장합니다.
 
 ## 8. 함수를 이용해 간단한 탭메뉴를 만들 수 있나요?
 
