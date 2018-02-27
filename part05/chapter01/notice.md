@@ -7,21 +7,20 @@
 ④ 대형프로그램을 여러 개의 부분으로 나누어서 프로그램하고 컴파일을 가능하게 합니다.<Br/><Br/>
 
 ## 2. 지역변수와 전역변수를 이해하고 있나요?
-**전역변수(Global Variable)**
 ```javascript
-int var = 3; // 전역변수
+var globalV ="전역변수"
 
-void add() {
-    var++; // 어디서나 접근 가능
-    printf("%d\n", var); // 4
+window.onload=function(){
+  global2 ="전역변수"
 }
 
-int main() {
-    add();
-    printf("%d", var); // 4, 값의 유지
-    return 0;
+function func1(){
+  var local1 = "지역변수"
 }
 ```
+
+
+**전역변수(Global Variable)**
 1. 값의 유지<br />
 2. 어디에서든 접근 가능<br />
 3. main 함수 실행 전에, 프로그램이 실행되자 마자 메모리에 할당됨.<br />
@@ -36,35 +35,6 @@ int main() {
    뭐 그렇다고 해서 꼭 안 좋은 것만은 아니기 때문에 적절히 활용하면 된다.<br /><br />
 
 **지역 변수(Local Variable)**
-```javascript
-int var = 3; // 전역변수
-
-void add() {
-    int var = 4;
-    var++;
-    // 지역 변수의 우선순위가 전역 변수보다 높음.
-    printf("%d\n", var); // 5
-}
-
-int main() {
-    { // block scope
-        int asdf = 33;
-        printf("%d", asdf);
-    }
-    // printf("%d", asdf); // 스코프를 벗어나서 컴파일 오류가 남.
-    add();
-    printf("%d\n", var); // 3, 값의 유지가 안 됨.
-    int i = 0;
-    // 지역 변수 i의 scope 시작
-    for(int i=0; i<3; i++) {
-        printf("%d ", i); // 0 1 2
-    }
-    // 지역 변수 i의 scope 끝
-    printf("\n%d", i); // 0, 여기서 나온 건 전역 변수 i
-    return 0;
-}
-```
-
 1. 매번 새로운 값 생성, 값의 유지가 안 됨.<br />
 2. 지정된 블록 스코프(제어문, 함수 등등)에서만 접근 가능<br />
 3. 함수가 실행되는 순간마다 메모리에 할당됨.<br />
