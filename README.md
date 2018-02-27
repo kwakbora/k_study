@@ -1,8 +1,8 @@
 #  프론트엔드 개발자를 위한 필독서!<br />자바스크립트+jQuery 완전정복 스터디 3
 
-## part 05. 자바스크립트 클래스와 클래스 단위 프로그래밍
+## part 05. 자바스크립트 클래스와 클래스 단위 프로그래밍   --> [작업 확인하기](https://github.com/kwakbora/k_study/tree/master/part05/chapter01)
 
-1. chapter01 :: 자바스크립트 클래스 기초  --> [작업 확인하기](https://github.com/kwakbora/k_study/tree/master/part05/chapter01)
+1. chapter01 :: 자바스크립트 클래스 기초
    - 1주차 - 클래스 기본/오브젝트 리터럴 방식
 2. chapter02 :: 클래스 중급
 3. chapter03 :: jQuery 플러그인 제작
