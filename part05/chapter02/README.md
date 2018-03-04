@@ -22,7 +22,7 @@
 
   1. data = 30
   2. this.data = 30
-    3. window.data = 30
+  3. window.data = 30
 
 
 
@@ -58,12 +58,21 @@ outer();
 *결과
 
 1. data = 100
-
 2. this.data = 20
-
 3. window.data = 20
 
-   ​
+
+함수내 this.data 에 의해 전역변수 data에 20이 할당된다.
+
+그리고 var data 에 의해 지역변수 data에 50이라는 값이 담긴다. 
+
+그리고 data =100; 에 의해 지역변수 data에 100이라는 값이 담기게 된다.
+
+console.log("1. data = " + data); 에서의 data는 함수 내부의 지역변수를 data로 찾아 100이 된다.
+
+console.log("2. this.data = " + this.data); 에서의 this.data은 함수를 호출한 window 객체의 data(전역변수)를 찾아 20 이 된다.
+
+console.log("3. window.data = " + window.data); 에서의 window.data은 전역변수 data를 찾아 20 된다.
 
 
 ## 2. 중첩함수에서의 this
