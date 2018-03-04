@@ -140,4 +140,35 @@ $(documnet).ready(function(){
 
 ## 4. 메서드에서 this
 
+```javascript
+var num = 1;
+function MyClass() {
+	this.num = 2;
+}
+MyClass.prototype.method1 = function() {
+	this.num = 3;
+	num = 4;
+
+	console.log(num);
+	console.log(this.num);
+	console.log(window.num);
+}
+
+var my1 = new MyClass();
+my1.method1();
+```
+
+*결과
+
+1. num = 4
+2. this.num = 3
+3. window.num = 4
+
+MyClass.prototype.method1 의 num은 method1이라는 함수안의 변수처럼 보인다, 다만 앞에 예약어인 var 가 없기 때문에  지역변수 num을 찾다가 없으니까 window 전역객체의 변수 num에 4라는 값이 할당되게 된다.
+
+console.log(this.num); 은 method1을 호출한 객체인  my1의 속성(property)로써 3이라는 값이 할당받게 된다.
+
+
+
+
 ## 5. 메서드 내부의 중첩 함수에서 this
