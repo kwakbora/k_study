@@ -1,5 +1,7 @@
 #  프론트엔드 개발자를 위한 필독서!<br />자바스크립트+jQuery 완전정복 스터디 3
 
+**:: 클래스를 이해하기 위해 반드시 알고 있어야 하는 내용** --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter01/notice.md)
+
 ## part 05. 자바스크립트 클래스와 클래스 단위 프로그래밍
 
 1. chapter01 :: 자바스크립트 클래스 기초  --> [작업 확인하기](https://github.com/kwakbora/k_study/tree/master/part05/chapter01)
