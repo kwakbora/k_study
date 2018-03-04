@@ -75,6 +75,7 @@ console.log("2. this.data = " + this.data); 에서의 this.data은 함수를 호
 console.log("3. window.data = " + window.data); 에서의 window.data은 전역변수 data를 찾아 20 된다.
 
 
+
 ## 2. 중첩함수에서의 this
 
 ```javascript
@@ -105,7 +106,37 @@ data= 30; 의 경루 먼저 지역변수 내에서 data를 찾고 없으면 inne
 그래서 결과값은 전역변수인 dat에 30이 저장된다.
 
 
+
 ## 3. 이벤트에서 this
+```javascript
+var data = 10;
+$(documnet).ready(function(){
+	//이벤트 리스너 등록
+    $($myButton).click(function(){
+       this.data = 20;
+        data = 30;
+        
+       	console.log("1. data = " + data); // 30
+        console.log("2. this.data = " + this.data); // 20
+        console.log("3. window.data = " + window.data); // 30
+    });
+});
+```
+
+*결과
+
+1. data = 30
+
+2. this.data = 20
+
+3. window.data = 30
+
+
+이벤트 리스너에서 this는 이벤트를 발생시킨 객체가 된다. 그렇기 때문에 this는 #myButton이 된다.
+
+이에따라 #myButton 객체에 data라는 프로퍼티를 동적으로 추가 하는 구문이 된다.
+
+
 
 ## 4. 메서드에서 this
 
