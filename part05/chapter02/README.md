@@ -170,5 +170,41 @@ console.log(this.num); 은 method1을 호출한 객체인  my1의 속성(propert
 
 
 
-
 ## 5. 메서드 내부의 중첩 함수에서 this
+
+```javascript
+var num = 1;
+function MyClass() {
+	this.num = 2;
+}
+MyClass.prototype.method1 = function() {
+	function inner() {
+		this.num = 3;
+		num = 4;
+
+		console.log(num);
+		console.log(this.num);
+		console.log(window.num);
+	}
+	inner();
+}
+
+var my1 = new MyClass();
+my1.method1();
+```
+
+*결과
+
+1. num = 4;
+
+2. this.num = 4;
+
+3. window.num = 4;
+
+   
+
+중첩함수 내부의 this는 window 객체를 의미한다. 메서드 안의 중첩함수도 예외는 아니다.
+
+this.num은 중첩함수 inner안에 있다 중첩함수 내부의 this는 window객체 이기 때문에 전역변수 num 에 3이라는 값이 대입했지만,  전역변수인 num = 4; 에 의해 4라는 값을 가지게 된다.
+
+
