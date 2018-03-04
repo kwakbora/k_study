@@ -8,10 +8,9 @@
    - 클래스 기본/오브젝트 리터럴 방식 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter01/00_practice.html)<br />
    - 클래스 기본/함수방식 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter01/01_practice.html)<br />
    - 클래스 기본/프로토타입방식 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter01/02_practice.html)<br />
-2. chapter02 :: 클래스 중급
-   -_this 의 정체 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02)<br />
-3. chapter03 :: jQuery 플러그인 제작
-
+- chapter02 :: 클래스 중급
+     -_this 의 정체 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02)<br />
+- chapter03 :: jQuery 플러그인 제작
 
 
 ## part 06. 자바스크립트 객제지향 프로그래밍
