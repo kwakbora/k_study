@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+
+	<style>
+		.tab-menu {
+			list-style: none;
+			height:80px;
+		}
+		.tab-menu li {
+			width:99px;
+			height:40px;
+			background:#e9e9e9;
+			color:#000;
+			border:2px solid #000;
+			text-align:center;
+			line-height:40px;
+			display: inline-block;
+			float:left;
+			margin-left:10px;
+			font-weight:600;
+		}
+		.tab-menu li:first-child{margin-left:0;}
+		.tab-menu li:hover {background-color:#F0C545;cursor:pointer;}
+		.tab-menu li.select {
+			height:80px;
+			background-color:#0A858E;
+			color:#fff;
+			font-style:italic;
+		}
+
+	</style>
+
+	<script src="../../libs/jquery-1.11.0.min.js"></script>
+	<script>
+
+	/* 클래스 단위 코딩 알아보기 */
+
+	$(document).ready(function(){
+		var tab1 = new TabMenu("#tabMenu1");
+		tab1.setSelectItemAt(1);
+
+		var tab2 = new TabMenu("#tabMenu2");
+		tab2.setSelectItemAt(2);
+	});
+
+	function TabMenu(selector){  // 1. 클래스 생성
+
+		this.$tabMenu = null; // 2. 변수를 프로퍼티로 만들기
+		this.$menuItems = null;
+		this.$selectMenuItem = null;
+
+		this.init(selector);
+		this.initEvent();
+	}
+
+	TabMenu.prototype.init = function(selector){
+		this.$tabMenu = $(selector); // 3. 함수를 메서드로 생성한다.
+		this.$menuItems = this.$tabMenu.find('li');
+	}
+
+	TabMenu.prototype.initEvent = function(){
+		var objThis = this;
+		this.$menuItems.on('click', function(){
+			objThis.selectItem($(this));
+		});
+	}
+
+	TabMenu.prototype.selectItem = function($menuItems){
+		if(this.$selectMenuItem){
+			this.$selectMenuItem.removeClass('select');
+		}
+
+		this.$selectMenuItem = $menuItems;
+		this.$selectMenuItem.addClass('select');
+
+	}
+
+	TabMenu.prototype.setSelectItemAt = function(index){
+
+		var $menuItem = this.$menuItems.eq(index);
+		this.selectItem($menuItem);
+	}
+
+	/*
+
+	1. 프로토타입 방식의 경우 여러 개의 인스턴스에서 메서드를 공유해서 사용하기 때문에
+	TabMenu() 함수를 호출할 때마다 내부에 선언된 중첩 함수가 만들어지는 단점을 해결할 수 있다.
+
+	2. 함수와 달리 프로퍼티와 메서드는 외부에서 접근 할 수 있는 구조로 되어 있기 때문에 언제든지 필요한 메서드를 접근해서 사용할 수 있다.
+
+	*/
+
+	</script>
+</head>
+
+<body>
+<p>첫 번째 탭메뉴</p>
+<ul class="tab-menu" id="tabMenu1">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
+
+<ul class="tab-menu" id="tabMenu2">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
+</body>
+</html>
