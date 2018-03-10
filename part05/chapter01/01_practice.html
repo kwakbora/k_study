@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+
+	<style>
+		.tab-menu {
+			list-style: none;
+			height:80px;
+		}
+		.tab-menu li {
+			width:99px;
+			height:40px;
+			background:#e9e9e9;
+			color:#000;
+			border:2px solid #000;
+			text-align:center;
+			line-height:40px;
+			display: inline-block;
+			float:left;
+			margin-left:10px;
+			font-weight:600;
+		}
+		.tab-menu li:first-child{margin-left:0;}
+		.tab-menu li:hover {background-color:#F0C545;cursor:pointer;}
+		.tab-menu li.select {
+			height:80px;
+			background-color:#0A858E;
+			color:#fff;
+			font-style:italic;
+		}
+
+	</style>
+
+	<script src="../../libs/jquery-1.11.0.min.js"></script>
+	<script>
+
+	$(document).ready(function(){
+
+		var tab1 = new tabMenu(); // 인스턴스 생성
+
+		tab1.init(); // 탭메뉴 요소 초기화
+		tab1.initEvent(); //탭메뉴 요소에 이벤트 등록
+
+	});
+
+	function tabMenu(){  // 1. 클래스 생성
+
+		this.$tabMenu = null; // 2. 변수를 프로퍼티로 만들기
+		this.$menuItems = null;
+		this.$selectMenuItem = null;
+
+		this.init = function(){
+			this.$tabMenu = $('#tabMenu1'); // 3. 함수를 메서드로 생성한다.
+			this.$menuItems = this.$tabMenu.find('li');
+		}
+
+		this.initEvent = function(){
+			var objThis = this;
+			this.$menuItems.on('click', function(){
+
+				objThis.selectItem($(this));
+			});
+		}
+
+		this.selectItem = function($menuItems){
+			if(this.$selectMenuItem){
+				this.$selectMenuItem.removeClass('select');
+			}
+
+			this.$selectMenuItem = $menuItems;
+			this.$selectMenuItem.addClass('select');
+
+		}
+
+
+	}
+
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+<p>첫 번째 탭메뉴</p>
+<ul class="tab-menu" id="tabMenu1">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
+</body>
+</html>
