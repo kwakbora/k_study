@@ -11,9 +11,9 @@
 2. chapter02 :: 클래스 중급
    - _this 의 정체 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02)<br />
    - 함수() 호출 과 new 함수호출() --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/Lesson02.md)<br />
-   - 함수 단위 코딩 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/00_practice.html)<br />
-   - 클래스 단위 코딩 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/01_practice.html)<br />
-   - 인스턴스 프로퍼티/메서드 vs 클래스 프로퍼티/메서드 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/Lesson03.md)<br />
+   - 함수 단위 코딩 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/00_practice.html)<br />
+   - 클래스 단위 코딩 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/01_practice.html)<br />
+   - 인스턴스 프로퍼티/메서드 vs 클래스 프로퍼티/메서드 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/Lesson03.md)<br />
 3. chapter03 :: jQuery 플러그인 제작
 
 
