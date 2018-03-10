@@ -39,13 +39,13 @@
 	/* 함수 단위 코딩 알아보기 */
 
 	$(document).ready(function(){
-		var tab1 = tabMenu("#tabMenu1");
+		var tab1 = TabMenu("#tabMenu1");
 		tab1.setSelectItemAt(1);
-		var tab2 = tabMenu("#tabMenu2");
+		var tab2 = TabMenu("#tabMenu2");
 		tab2.setSelectItemAt(2);
 	});
 
-	function tabMenu(selector){  // 1. 클래스 생성
+	function TabMenu(selector){  // 1. 클래스 생성
 
 		var $tabMenu = null; // 2. 변수를 프로퍼티로 만들기
 		var $menuItems = null;
