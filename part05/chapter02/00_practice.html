@@ -1,19 +1,121 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>bora study page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
 
-<script type="text/javascript">
- 
+	<style>
+		.tab-menu {
+			list-style: none;
+			height:80px;
+		}
+		.tab-menu li {
+			width:99px;
+			height:40px;
+			background:#e9e9e9;
+			color:#000;
+			border:2px solid #000;
+			text-align:center;
+			line-height:40px;
+			display: inline-block;
+			float:left;
+			margin-left:10px;
+			font-weight:600;
+		}
+		.tab-menu li:first-child{margin-left:0;}
+		.tab-menu li:hover {background-color:#F0C545;cursor:pointer;}
+		.tab-menu li.select {
+			height:80px;
+			background-color:#0A858E;
+			color:#fff;
+			font-style:italic;
+		}
 
-</script>
+	</style>
 
+	<script src="../../libs/jquery-1.11.0.min.js"></script>
+	<script>
 
+	/* 함수 단위 코딩 알아보기 */
+
+	$(document).ready(function(){
+		var tab1 = tabMenu("#tabMenu1");
+		tab1.setSelectItemAt(1);
+		var tab2 = tabMenu("#tabMenu2");
+		tab2.setSelectItemAt(2);
+	});
+
+	function tabMenu(selector){  // 1. 클래스 생성
+
+		var $tabMenu = null; // 2. 변수를 프로퍼티로 만들기
+		var $menuItems = null;
+		var $selectMenuItem = null;
+
+		function init(selector){
+			$tabMenu = $(selector); // 3. 함수를 메서드로 생성한다.
+			$menuItems = $tabMenu.find('li');
+		}
+
+		function initEvent(){
+			$menuItems.on('click', function(){
+				selectItem($(this));
+			});
+		}
+
+		function selectItem($menuItems){
+			if($selectMenuItem){
+				$selectMenuItem.removeClass('select');
+			}
+
+			$selectMenuItem = $menuItems;
+			$selectMenuItem.addClass('select');
+
+		}
+
+		function setSelectItemAt(index){
+			selectItem($menuItems.eq(index));
+		}
+
+		init(selector);
+		initEvent();
+
+		return{
+			"setSelectItemAt":setSelectItemAt
+		}
+
+	}
+
+	/*
+
+	1. setSelectItemAt() 함수를 오브젝트 리터럴로 감싸 리턴해 줍니다.
+	2. 리턴한 값을 변수(tab1) 에 저장합니다.
+	3. 리턴한 오브젝트 리터럴 객체에 포장한 setSelectItemAt 메서드를 호출해 줍니다.
+
+	이와 같은 방식을 활용하면 외부에서 내부 속성과 함수를 접근해서 사용할 수 있게 됩니다.
+
+	*/
+
+	</script>
 </head>
 
 <body>
-    
-       
+<p>첫 번째 탭메뉴</p>
+<ul class="tab-menu" id="tabMenu1">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
+
+<ul class="tab-menu" id="tabMenu2">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>
 </body>
 </html>
