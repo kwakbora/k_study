@@ -15,6 +15,7 @@
    - 클래스 단위 코딩 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/01_practice.html)<br />
    - 인스턴스 프로퍼티/메서드 vs 클래스 프로퍼티/메서드 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter02/Lesson03.md)<br />
 3. chapter03 :: jQuery 플러그인 제작
+   - jQuery  유틸리티 만들기 --> [작업 확인하기](https://github.com/kwakbora/k_study/blob/master/part05/chapter03)<br />
 
 
 ## part 06. 자바스크립트 객제지향 프로그래밍
