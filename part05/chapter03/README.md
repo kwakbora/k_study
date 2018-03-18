@@ -109,3 +109,42 @@ $(document).ready(function(){
 1. $.fn 은 prototype과 동일하다. 즉, jQuery.prototype과 동일하다.
 2. each() 메서드의 내부에서 this는 현재 처리하고 있는 자바스크립트 DOM 노드이다. 자바스크립트에는 스타일을 변경할 때 유용하게 사용하는 css() 메서드가 없기 때문에 $(this) 구문을 이용해 jQuery 인스턴스를 생성한 후 css() 메서드를 사용한 것이다.
 3. return this 를 선언한 이유는 redColor() 플러그인 호출 후 jQuery 메서드를 체인구조로 호출 할 수 있게 하기 위해서 this를 리턴해줘야 한다.
+
+<br />
+
+ex)  li태그 노드를 찾아 하나씩 차례대로 제거하는 플러그인을 만들어 보자. 단, 노드 제거시 노드의 높이를 0으로 서서히 줄이는 애니메이션을 적용한 후 지워보자.
+
+```html
+<script type="text/javascript">
+(function($){
+	$.fn.removeAni = function(){
+		this.each(function(index){
+			var $target = $(this);
+			$target.delay(index*1000).animate({
+				height:0
+			},500,function(){
+				$target.remove();
+			});
+		});
+		return this;
+	}
+})(jQuery);
+
+$(document).ready(function(){
+	$('.menu li').on('click',function(){
+		$(this).removeAni();
+	});
+});
+</script>
+
+<div class="wrap">
+	<ul class="menu">
+		<li>menu1</li>
+		<li>menu2</li>
+		<li>menu3</li>
+		<li>menu4</li>
+		<li>menu5</li>
+	</ul>
+</div>
+```
+
