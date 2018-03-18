@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../libs/jquery-1.11.0.min.js"></script>
+<title>bora study page</title>
+
+<script type="text/javascript">
+//redColor 플러그인 정의
+(function($){
+	$.fn.redColor = function(){
+		this.each(function(index){
+			$(this).css("border","4px solid #f00");
+		})
+		return this;
+	}
+})(jQuery);
+
+$(document).ready(function(){
+	//redColor 플러그인 사용
+	$("p").redColor();
+});
+
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+	<p>1.모든 자식 노드 찾기</p>
+	<p>2.특정 자식 노드 찾기</p>
+	<p>3.마지막 노드 찾기</p>
+</div>
+
+</body>
+</html>

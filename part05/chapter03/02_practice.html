@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../libs/jquery-1.11.0.min.js"></script>
+<title>bora study page</title>
+
+<script type="text/javascript">
+
+(function($){
+	$.fn.removeAni = function(){
+		this.each(function(index){
+			var $target = $(this);
+			$target.delay(index*1000).animate({
+				height:0
+			},500,function(){
+				$target.remove();
+			});
+		});
+		return this;
+	}
+})(jQuery);
+
+$(document).ready(function(){
+	$('.menu li').on('click',function(){
+		$(this).removeAni();
+	});
+});
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+	<ul class="menu">
+		<li>menu1</li>
+		<li>menu2</li>
+		<li>menu3</li>
+		<li>menu4</li>
+		<li>menu5</li>
+	</ul>
+</div>
+
+</body>
+</html>
