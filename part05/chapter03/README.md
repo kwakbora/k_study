@@ -52,7 +52,7 @@ $(document).ready(function(){
 });
 ```
 
-
+<br/><br/>
 
 # 2.jQuery 플러그인 만들기
 
@@ -77,3 +77,35 @@ jQuery 기능 중 jQuery 유틸리티를 제외한 모든 기능은 jQuery 플�
 })(jQuery);
 ```
 
+
+
+## 03_jQuery 플러그인 구조 분석
+
+
+
+ex) 선택한 노드의 외각선을 빨간색으로 표현하는 플러그인을 만들어보자.
+
+
+
+```javascript
+//redColor 플러그인 정의
+(function($){
+	$.fn.redColor = function(){
+		this.each(function(index){
+			$(this).css("border","4px solid #f00");
+		})
+		return this;
+	}
+})(jQuery);
+
+$(document).ready(function(){
+	//redColor 플러그인 사용
+	$("p").redColor();
+});
+```
+
+
+
+1. $.fn 은 prototype과 동일하다. 즉, jQuery.prototype과 동일하다.
+2. each() 메서드의 내부에서 this는 현재 처리하고 있는 자바스크립트 DOM 노드이다. 자바스크립트에는 스타일을 변경할 때 유용하게 사용하는 css() 메서드가 없기 때문에 $(this) 구문을 이용해 jQuery 인스턴스를 생성한 후 css() 메서드를 사용한 것이다.
+3. return this 를 선언한 이유는 redColor() 플러그인 호출 후 jQuery 메서드를 체인구조로 호출 할 수 있게 하기 위해서 this를 리턴해줘야 한다.
