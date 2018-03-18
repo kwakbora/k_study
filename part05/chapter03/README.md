@@ -1,6 +1,6 @@
-# jQuery  유틸리티 만들기
+# 1.jQuery  유틸리티 만들기
 
-## 01.유틸리티 소개
+## 01_유틸리티 소개
 
 jQuery   유틸리티는 문자열의 앞 뒤 공배을 없애주는 jQuery 의 trim() 메서드와 같이 주로 도움을 주는 기능을 합니다. jQuery 유틸리니는 jQuery 인스턴스를 생성하지 않고 다음과 같이 직접 접근해서 사용한다.
 
@@ -12,7 +12,7 @@ $.유틸리티();
 
 
 
-## 02.유틸리티 구조
+## 02_유틸리티 구조
 
 ```javascript
 (function($){
@@ -25,7 +25,7 @@ jQuery.유틸리티(); //사용하기
 
 
 
-## 03.사용자 정의 jQuery 유틸리티 만들기
+## 03_사용자 정의 jQuery 유틸리티 만들기
 
 ex) 3자리수마다 콤마를 추가하는 유틸리티 만들기
 
@@ -50,5 +50,30 @@ $(document).ready(function(){
    document.write("1234567 =>",$.addComma("1234567"),"<br />");
 
 });
+```
+
+
+
+# 2.jQuery 플러그인 만들기
+
+
+
+## 01_jQuery 플러그인 소개
+
+jQuery 기능 중 jQuery 유틸리티를 제외한 모든 기능은 jQuery 플러그인이라고 생각하면 된다.
+
+
+
+## 02_jQuery 플러그인 구조
+
+```javascript
+(function($){
+    $.fn.플러그인이름 = function(속성값){
+        this.each(function(index)){
+            //기능구현
+        }
+        return this;
+    }
+})(jQuery);
 ```
 
