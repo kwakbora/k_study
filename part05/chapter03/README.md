@@ -30,27 +30,25 @@ jQuery.유틸리티(); //사용하기
 ex) 3자리수마다 콤마를 추가하는 유틸리티 만들기
 
 ```javascript
-<script>
 (function($){
     $.addComma=function(value){
         var data = value+""; //숫자를 문자로 형변환;
         var aryResult = data.split(""); //문자를 배열로 만들기
-        var startIndex = aryResult.lenght-3; //배열 요소를 뒤에서 3자리수마다 콤마 추가하기
-        for(var i=startIndex;i>0;i-=3){
+        var startIndex = aryResult.length-3; //배열 요소를 뒤에서 3자리수마다 콤마 추가하기
+        for(var i=startIndex; i>0; i-=3){
             aryResult.splice(i,0,",");
         }
         return aryResult.join("");
-    } 
+    }
 })(jQuery);
 
-$(document).reday(function(){
-   document.write("123 =>",$addComma("123"),"<br />"); 
-   document.write("1234 =>",$addComma("1234"),"<br />"); 
-   document.write("12345 =>",$addComma("12345"),"<br />"); 
-   document.write("123456 =>",$addComma("123456"),"<br />"); 
-   document.write("1234567 =>",$addComma("1234567"),"<br />"); 
-    
+$(document).ready(function(){
+   document.write("123 =>",$.addComma("123"),"<br />");
+   document.write("1234 =>",$.addComma("1234"),"<br />");
+   document.write("12345 =>",$.addComma("12345"),"<br />");
+   document.write("123456 =>",$.addComma("123456"),"<br />");
+   document.write("1234567 =>",$.addComma("1234567"),"<br />");
+
 });
-</script>
 ```
 
