@@ -1,30 +1,30 @@
 function BarMenu(selector){
 	//프로퍼티 생성하기
 	this.$barMenu = null;
-	this.$menuBody = null;
-	this.$menuItems = null;
-	this.$overItem = null;
-	this.$bar = null;
+	this._$menuBody = null;
+	this._$menuItems = null;
+	this._$overItem = null;
+	this._$bar = null;
 
-	this.$selectItem = null;
+	this._$selectItem = null;
 
-	this.init(selector);
-	this.initEvent();
+	this._init(selector);
+	this._initEvent();
 }
 
 BarMenu.prototype.init = function(selector){
 	this.$barMenu = $(selector);
-	this.$menuBody = this.$barMenu.find(".menu-body");
-	this.$menuItems = this.$menuBody.find("li");
-	this.$bar = this.$barMenu.find(".bar");
+	this._$menuBody = this._$barMenu.find(".menu-body");
+	this._$menuItems = this._$menuBody.find("li");
+	this._$bar = this.$barMenu.find(".bar");
 
 }
-BarMenu.prototype.initEvent = function(){
+BarMenu.prototype._initEvent = function(){
 	var evThis = this;
 
 	//오버 메뉴 효과 처리 (02_1)
-	this.$menuItems.mouseenter(function(){
-		evThis.setOverMenu($(this));
+	this._$menuItems.mouseenter(function(){
+		evThis._setOverMenu($(this));
 	});
 
 	//메뉴 영역을 나간 경우(02_2)
@@ -32,22 +32,22 @@ BarMenu.prototype.initEvent = function(){
 		evThis.removeOver();
 
 		//재선택 처리(03_3)
-		evThis.reselctMenu();
+		evThis._reselctMenu();
 	});
 
 	// 선택 메뉴 아이템 구현하기(03_1)
-	this.$menuItems.click(function(){
+	this._$menuItems.click(function(){
 		// 기존 오버메뉴가 있을 경우 제거
-		evThis.removeOver();
-		evThis.setSelectMenu($(this));
+		evThis._removeOver();
+		evThis._setSelectMenu($(this));
 	});
 }
 
 /* 오버 메뉴 처리하기 (02_1)*/
-BarMenu.prototype.setOverMenu = function($item){
+BarMenu.prototype._setOverMenu = function($item){
 	// 기존 오버메뉴 over 제거하기
-	if(this.$overItem){
-		this.$overItem.removeClass("over");
+	if(this._$overItem){
+		this._$overItem.removeClass("over");
 	}
 
 	//this.$overItem = $item; //$item 매개변수 값으로 넘어온 메뉴를 $overItem 프로퍼티에 담는다.
@@ -55,33 +55,33 @@ BarMenu.prototype.setOverMenu = function($item){
 
 	// 선택메뉴 인덱스 값 구하기(03_2)
 	var selectIndex = -1;
-	if(this.$selectItem!=null){
-		selectIndex = this.$selectItem.index();
+	if(this._$selectItem!=null){
+		selectIndex = this._$selectItem.index();
 	}
 	// 오버와 선택 메뉴의 인덱스 값을 비교
 	if($item.index()!=selectIndex){
-		this.$overItem = $item; //$item 매개변수 값으로 넘어온 메뉴를 $overItem 프로퍼티에 담는다.
-		this.$overItem.addClass("over");
+		this._$overItem = $item; //$item 매개변수 값으로 넘어온 메뉴를 $overItem 프로퍼티에 담는다.
+		this._$overItem.addClass("over");
 	}else{
-		this.$overItem = null;
+		this._$overItem = null;
 	}
 
 	//바메뉴 동작 추가(02_3)
-	this.moveBar($item);
+	this._moveBar($item);
 }
 
 /* 오버 메뉴 제거 (02_2) */
 BarMenu.prototype.removeOver = function(){
-	if(this.$overItem){
-		this.$overItem.removeClass("over");
+	if(this._$overItem){
+		this._$overItem.removeClass("over");
 	}
-	this.$overItem = null;
+	this._$overItem = null;
 	//바메뉴 동작 추가(02_3)
-	this.moveBar(null);
+	this._moveBar(null);
 }
 
 /* 바 이동 (02_3) */
-BarMenu.prototype.moveBar = function($item,animation){
+BarMenu.prototype._moveBar = function($item,animation){
 	var left = 0;
 	var width = 0;
 	if($item!=null){
@@ -96,12 +96,12 @@ BarMenu.prototype.moveBar = function($item,animation){
 
 	/* 시작 시 메뉴클릭 시 모션 없음 (03_4)*/
 	if(animation == false){
-		this.$bar.css({
+		this._$bar.css({
 			"left":left,
 			"width":width
 		});
 	}else{
-		this.$bar.stop().animate({
+		this._$bar.stop().animate({
 			"left":left,
 			"width":width
 		},300,"easeOutQuint");
@@ -111,36 +111,36 @@ BarMenu.prototype.moveBar = function($item,animation){
 /* 선택 메뉴아이템 구현하기(03_1) */
 BarMenu.prototype.setSelectMenu = function($item,animation){
 	/* 선택 메뉴가 변경되는 경우 클래스 외부로 알려주는 기능구현 (4) */
-	var $oldItem = this.$selectItem;
+	var $oldItem = this._$selectItem;
 
-	if(this.$selectItem){
-		this.$selectItem.removeClass("select");
+	if(this._$selectItem){
+		this._$selectItem.removeClass("select");
 	}
 
-	this.$selectItem = $item;
-	this.$selectItem.addClass("select");
+	this._$selectItem = $item;
+	this._$selectItem.addClass("select");
 
-	this.moveBar($item,animation);
+	this._moveBar($item,animation);
 
 	/* 선택 메뉴가 변경되는 경우 클래스 외부로 알려주는 기능구현 (4) */
-	this.dispatchSelectEvent($oldItem,$item);
+	this._dispatchSelectEvent($oldItem,$item);
 
 }
 
-BarMenu.prototype.reselctMenu = function(){
-	if(this.$selectItem){
-		this.moveBar(this.$selectItem);
+BarMenu.prototype._reselctMenu = function(){
+	if(this._$selectItem){
+		this._moveBar(this._$selectItem);
 	}
 }
 
 /* 시작 시 메뉴클릭 시 모션 없음 (03_4)*/
 BarMenu.prototype.setSelectMenuAt = function(index,animation){
-	this.setSelectMenu(this.$menuItems.eq(index),animation)
+	this.setSelectMenu(this._$menuItems.eq(index),animation)
 
 }
 
 /* 선택 메뉴가 변경되는 경우 클래스 외부로 알려주는 기능구현 (4) */
-BarMenu.prototype.dispatchSelectEvent = function($oldItem,$newItem){
+BarMenu.prototype._dispatchSelectEvent = function($oldItem,$newItem){
 	var event = jQuery.Event("select");
 
 	event.$oldItem = $oldItem;
