@@ -33,7 +33,7 @@
 
 ## part 07. 실무활용! OOP를 적용한 UI 콘텐츠 제작
 
-1. chapter01 :: 1단 바메뉴
+1. chapter01 :: 1단 바메뉴 --> [작업 확인하기](https://github.com/kwakbora/k_study/tree/master/part05/chapter03/bar_menu)<br />
 2. chapter02 :: 폴더 아코디언
 3. chapter03 :: 이미지 슬라이드
 4. chapter04 :: 탭패널
