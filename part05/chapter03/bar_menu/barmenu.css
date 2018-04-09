@@ -41,5 +41,11 @@
     left:0;
     bottom:2px;
 }
+#barMenu2{
+	position:relative;
+	left:100px;
+	top:250px;
+	width:700px;
+}
 
 
