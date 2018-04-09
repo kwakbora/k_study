@@ -8,6 +8,7 @@
 			// barMenu() 플러그인 내부에서 생성한 barMenu 객체를 해당 jQuery 객체에 저장해 준다.
 
 			$(this).data("barMenu",barMenu);
+			$(this).data("idx",index);
 		});
 	return this;
 	}

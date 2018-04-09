@@ -37,10 +37,12 @@ $(document).ready(function(){
 	var $barMenu = $('.bar-menu').barMenu();
 	$barMenu.on("select",function(e){
 		var oldIndex = -1;
+		//var lMenu = $(this).closest('.bar-menu').attr('id');
+		var lMenuIdx = $(this).closest('.bar-menu').data('idx');
 		if(e.$oldItem){
 			oldIndex = e.$oldItem.index();
 
-			console.log("old = " + oldIndex, "new = " + e.$newItem.index());
+			console.log("메뉴 :"+lMenuIdx+" old = " + oldIndex, "new = " + e.$newItem.index());
 		}
 	});
 
@@ -54,7 +56,7 @@ $(document).ready(function(){
 
 <body>
 
-    <div class="bar-menu" id="barMenu1">
+    <div class="bar-menu">
         <ul class="menu-body">
             <li>웹동네 홈</li>
             <li>공개 스터디</li>
@@ -66,7 +68,7 @@ $(document).ready(function(){
         <div class="bar"> </div>
     </div>
 
-    <div class="bar-menu" id="barMenu2">
+    <div class="bar-menu">
         <ul class="menu-body">
             <li>웹동네 홈</li>
             <li>공개 스터디</li>
