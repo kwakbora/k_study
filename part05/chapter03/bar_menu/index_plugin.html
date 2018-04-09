@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>bora study page</title>
+<link rel="stylesheet" type="text/css" href="barmenu.css">
+<style>
+	* {padding:0;margin:0;}
+	body{font-size:9pt;}
+	#barMenu1 {position:relative;left:100px;top:100px;width:700px;}
+</style>
+<script src="../../../libs/jquery-1.11.0.min.js"></script>
+<script src="../../../libs/jquery.easing.1.3.js"></script>
+<script src="barmenu.js"></script>
+<script>
+/*
+* 분석하기
+* 01.오버효과 만들기 (선택된 메뉴가 있을경우 다른메뉴 오버후 선택된 메뉴로 돌아가기)
+* 02.선택된 메뉴는 오버를 해도 무조건 선택만 되게 해야한다.
+* 03.선택된 메뉴가 없는경우 오버후 메뉴아웃했을 떄 바는 자연스럽게 왼쪽으로 사라짐
+* 04.기존 선택된 메뉴는 다른 메뉴 클릭시 선택이 사라짐.
+*/
+$(document).ready(function(){
+	var barMenu = new BarMenu("#barMenu1");
+
+
+	/* 선택 메뉴가 변경되는 경우 클래스 외부로 알려주는 기능구현 (4) */
+	barMenu.$barMenu.on("select",function(e){
+		var oldIndex = -1;
+		if(e.$oldItem){
+			oldIndex = e.$oldItem.index();
+
+			console.log("old = " + oldIndex, "new = " + e.$newItem.index());
+		}
+	});
+
+	/* 시작 시 메뉴클릭 시 모션 없음 (03_4)*/
+	barMenu.setSelectMenuAt(1,false);
+
+
+
+	// 1. 오버 스타일 효과 테스트
+	/*$(".bar-menu .menu-body li:eq(0)").addClass("over");
+
+	var $item = $(".bar-menu .menu-body li:eq(2)");
+
+	// 2. 선택 스타일 효과 테스트
+	// 메뉴 항목에 선택 스타일 적용
+	$item.addClass("select");
+
+
+	// 3. 선택한 메뉴 항목위치로 bar 이동 테스트
+	// 이동 위치는 현재 위치 + margin-left
+	var left = $item.position().left+parseInt($item.css("margin-left"));
+
+	var width = $item.innerWidth();
+
+	$(".bar").css({
+	left:left,
+	width:width
+	})*/
+});
+</script>
+
+</head>
+
+<body>
+
+    <div class="bar-menu" id="barMenu1">
+
+        <ul class="menu-body">
+            <li>웹동네 홈</li>
+            <li>공개 스터디</li>
+            <li>온라인 동영상 강의</li>
+            <li>참여형 특강</li>
+            <li>정보공유 세미나</li>
+            <li>기업/단체강의</li>
+        </ul>
+
+        <div class="bar"> </div>
+
+    </div>
+
+</body>
+</html>
