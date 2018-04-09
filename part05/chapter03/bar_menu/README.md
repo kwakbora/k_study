@@ -70,5 +70,23 @@
 
 자바스크립트는 문법적으로 캡슐화를 지원하지 않지만 외부에서 접근하지 못한다는 의미로 프로퍼티와 메서드 앞에 언더바(_) 를 붙여 사용한다.
 
+접근 가능(public) / 프로퍼티:  $barMenu
 
+접근 불가능(private) / 프로퍼티:  <br />
+_$menuBody<br />
+_$menuItems<br />
+_$overItem<br />
+_$bar<br />
+
+접근 가능(public) / 메서드: setSelectMenu / setSelectMenuAt<br />
+
+접근 불가능(private) / 메서드: <br />
+_init<br />
+_initEvent<br />
+_setOverMenu<br />
+_removeOver<br />
+_reselctMenu<br />
+_moveBar<br />
+_reselctMenu<br />
+_dispatchSelectEvent<br />
 
