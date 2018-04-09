@@ -29,7 +29,7 @@ BarMenu.prototype._initEvent = function(){
 
 	//메뉴 영역을 나간 경우(02_2)
 	this.$barMenu.mouseleave(function(){
-		evThis.removeOver();
+		evThis._removeOver();
 
 		//재선택 처리(03_3)
 		evThis._reselctMenu();
@@ -39,7 +39,7 @@ BarMenu.prototype._initEvent = function(){
 	this._$menuItems.click(function(){
 		// 기존 오버메뉴가 있을 경우 제거
 		evThis._removeOver();
-		evThis._setSelectMenu($(this));
+		evThis.setSelectMenu($(this));
 	});
 }
 
