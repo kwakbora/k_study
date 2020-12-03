@@ -20,14 +20,20 @@
 <script type="text/javascript">
 		document.write('<div class="dan_wrap">')
 
-		for(var i = 1; i <=9; i = i+2){
-			document.write('<div class="dan">')
-			document.write('<h2>' + i + '단 </h2>');
+		for(var i = 1; i <=9; i++){
+			if(i%2==1){
+				if(i===7){
+					document.write('<div class="dan">')
+					document.write('<h2>' + i + '단 </h2>');
 
-			for(var j = 1; j<=9; j++){
-				document.write(j + ' X ' + i + ' = ' + i*j + '<br>');
+					for(var j = 1; j<=9; j++){
+						if(j%2==1){
+						document.write(i + ' X ' + j + ' = ' + i*j + '<br>');
+						}
+					}
+					document.write('</div>')
+				}
 			}
-			document.write('</div>')
 		}
 
 		document.write('</div>')
