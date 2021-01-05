@@ -623,3 +623,31 @@ const count = countBiggerThanTen([1, 2, 3, 5, 10, 20, 30, 40, 50, 60]);
 console.log(count); // 5
 ```
 
+
+## _11. 프로초타입과 클래스
+```javascript
+class Food{
+  constructor(name){
+    this.name = name;
+    this.brands = [];
+  }
+  addBrands(brand){
+    this.brands.push(brand);
+  }
+  print(){
+    console.log(`${this.name} 를 파는 사람들`);
+    console.log(this.brands.join('& '));
+  }
+}
+
+const pizza = new Food('피자');
+pizza.addBrands('피자헛');
+pizza.addBrands('도미노피자');
+
+const chicken = new Food('치킨');
+chicken.addBrands('굽네치킨');
+chicken.addBrands('BBQ');
+
+pizza.print();
+chicken.print();
+```
