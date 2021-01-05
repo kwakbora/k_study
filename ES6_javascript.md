@@ -624,7 +624,9 @@ console.log(count); // 5
 ```
 
 
-# 프로초타입과 클래스
+
+# 프로토타입과 클래스
+
 ```javascript
 class Food{
   constructor(name){
