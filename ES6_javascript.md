@@ -574,7 +574,7 @@ const counts = alphabets.reduce((acc, current) => {
  return acc;
 },{} //비어있는 객체로 설정)
 
-console.log(counts); // 
+console.log(counts); // a:3 b:1 c:2 d:1 e:1
 ```
 
 
