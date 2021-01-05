@@ -208,3 +208,290 @@ console.log(biggerThanThree(numbers)); // [4, 5, 6, 7]
 
 
 ### _02. forEach (배열 내장함수)
+
+`forEach` 는 가장 쉬운 배열 내장함수입니다. 기존에 우리가 배웠던 for 문을 대체 시킬 수 있습니다. 
+
+만약, 배열 안에 있는 모든 원소들을 모두 출력해야 한다면 for 문을 사용하여 다음과 같이 구현 할 수 있는데요,
+
+```javascript
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+for (let i = 0; i < superheroes.length; i++) {
+  console.log(superheroes[i]);
+}
+```
+
+배열의 forEach 함수를 사용하면 다음과 같이 구현 할 수 있습니다.
+
+```javascript
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+/*
+superheroes.forEach(function(hero) {
+  console.log(hero);
+});
+*/
+superheroes.forEach(hero => {
+  console.log(hero);
+});
+```
+
+forEach 함수의 파라미터로는, 각 원소에 대하여 처리하고 싶은 코드를 함수로 넣어줍니다. 이 함수의 파라미터 hero는 각 원소를 가르키게 됩니다.
+
+이렇게 함수형태의 파라미터를 전달하는 것을 콜백함수 라고 부릅니다. 함수를 등록해주면, forEach 가 실행해 줍니다.
+
+
+
+### _03. map
+
+`map` 은 배열 안의 각 원소를 변환 할 때 사용 되며, 이 과정에서 새로운 배열이 만들어집니다.
+
+만약에 배열 안의 모든 숫자를 제곱해서 새로운 배열을 만들고 싶다면 어떻게 해야 할까요? map 함수를 사용하지 않고 우리가 지금까지 배운 지식들을 활용하면 다음과 같이 구현 할 수 있습니다.
+
+```javascript
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const squared = [];
+for (let i = 0; i < array.length; i++) {
+  squared.push(array[i] * array[i]);
+}
+
+console.log(squared);
+```
+
+또는 방금 배운 forEach 를 쓰면 다음과 같이 구현 할 수도 있겠죠
+
+```javascript
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const squared = [];
+/*
+array.forEach(function(n){
+	squared.push(n * n);
+});
+*/
+array.forEach(n => {
+  squared.push(n * n);
+});
+
+console.log(squared);
+```
+
+만약 map 을 사용하면 이를 더 짧은 코드를 사용하여 구현 할 수 있습니다.
+
+```javascript
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+//const square = n => n * n;
+const squared = array.map(n => n * n); //map 안에 직접 넣어도 됨
+console.log(squared);
+```
+
+
+
+### _04. indexOf
+
+`indexOf` 는 원하는 항목이 몇번째 원소인지 찾아주는 함수입니다.
+
+```javascript
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+const index = superheroes.indexOf('토르');
+console.log(index);  //결과값 2
+```
+
+
+
+### _05. findIndex
+
+만약에 배열 안에 있는 값이 숫자, 문자열, 또는 불리언이라면 찾고자하는 항목이 몇번째 원소인지 알아내려면 indexOf 를 사용하면 됩니다. 하지만, 배열 안에 있는 값이 객체이거나, 배열이라면 indexOf 로 찾을 수 없습니다.
+
+```javascript
+const todos = [
+  {
+    id: 1,
+    text: '자바스크립트 입문',
+    done: true
+  },
+  {
+    id: 2,
+    text: '함수 배우기',
+    done: true
+  },
+  {
+    id: 3,
+    text: '객체와 배열 배우기',
+    done: true
+  },
+  {
+    id: 4,
+    text: '배열 내장함수 배우기',
+    done: false
+  }
+];
+
+const index = todos.findIndex(todo => todo.id === 3);
+console.log(index);
+```
+
+만약 id 가 3 인 객체가 몇번째인지 찾으러면, `findIndex` 함수에 검사하고자 하는 조건을 반환하는 함수를 넣어서 찾을 수 있습니다.
+
+
+
+### _06. find
+
+`find` 함수는 `findIndex` 랑 비슷한데, 찾아낸 값이 몇번째인지 알아내는 것이 아니라, 찾아낸 값 자체를 반환합니다.
+
+```javascript
+const todos = [
+  {
+    id: 1,
+    text: '자바스크립트 입문',
+    done: true
+  },
+  {
+    id: 2,
+    text: '함수 배우기',
+    done: true
+  },
+  {
+    id: 3,
+    text: '객체와 배열 배우기',
+    done: true
+  },
+  {
+    id: 4,
+    text: '배열 내장함수 배우기',
+    done: false
+  }
+];
+
+const todo = todos.find(todo => todo.id === 3);
+console.log(todo); // {id: 3, text: "객체와 배열 배우기", done: true}
+```
+
+
+
+### _07. filter
+
+`filter` 함수는 배열에서 특정 조건을 만족하는 값들만 따로 추출하여 새로운 배열을 만듭니다. 예를 들어서, 우리가 방금 만들었던 todos 배열에서 done 값이 false 인 항목들만 따로 추출해서 새로운 배열을 만들어봅시다.
+
+```javascript
+const todos = [
+  {
+    id: 1,
+    text: '자바스크립트 입문',
+    done: true
+  },
+  {
+    id: 2,
+    text: '함수 배우기',
+    done: true
+  },
+  {
+    id: 3,
+    text: '객체와 배열 배우기',
+    done: true
+  },
+  {
+    id: 4,
+    text: '배열 내장함수 배우기',
+    done: false
+  }
+];
+
+const tasksNotDone = todos.filter(todo => todo.done === false);
+console.log(tasksNotDone);
+
+//결과값 
+/*[
+  {
+    id: 4,
+    text: '배열 내장 함수 배우기',
+    done: false
+  }
+];*/
+```
+
+filter 함수에 넣는 파라미터는 조건을 검사하는 함수를 넣어주며, 이 함수의 파라미터로 각 원소의 값을 받아오게 됩니다.
+
+방금 우리가 작성한 코드는 이렇게 입력 할 수도 있습니다.
+
+```javascript
+const tasksNotDone = todos.filter(todo => !todo.done);
+```
+
+
+
+### _08. splice
+
+splice 는 배열에서 특정 항목을 제거할 때 사용합니다.
+
+```javascript
+const numbers = [10, 20, 30, 40];
+
+const index = numbers.indexOf(30);
+numbers.splice(index, 1);
+console.log(numbers); //[10, 20, 40]
+```
+
+splice 를 사용 할 때 첫번째 파라미터는 어떤 인덱스부터 지울지를 의미하고 두번째 파라미터는 그 인덱스부터 몇개를 지울지를 의미합니다.
+
+
+
+### _09. slice
+
+slice 는 splice 랑 조금 비슷한데요, 배열을 잘라낼 때 사용하는데, 중요한 점은 기존의 배열은 건들이지 않는 다는 것입니다.
+
+```javascript
+const numbers = [10, 20, 30, 40];
+const sliced = numbers.slice(0, 2); // 0부터 시작해서 2전까지
+
+console.log(sliced); // [10, 20]
+console.log(numbers); // [10, 20, 30, 40]
+```
+
+slice 에는 두개의 파라미터를 넣게 되는데 첫번째 파라미터는 어디서부터 자를지, 그리고 두번째 파라미터는 어디까지 자를지 를 의미합니다.
+
+
+
+### _10. shift 와 pop
+
+`shift` 는 첫번째 원소를 배열에서 추출해줍니다. (추출하는 과정에서 배열에서 해당 원소는 사라집니다.)
+
+```javascript
+const numbers = [10, 20, 30, 40];
+
+const value = numbers.shift();
+console.log(value);  //10
+console.log(numbers); //[20, 30, 40]
+```
+
+slice 에는 두개의 파라미터를 넣게 되는데 첫번째 파라미터는 어디서부터 자를지, 그리고 두번째 파라미터는 어디까지 자를지 를 의미합니다.
+
+
+
+`pop` 은 `push` 의 반대로 생각하시면 됩니다. `push` 는 배열의 맨 마지막에 새 항목을 추가하고, `pop` 은 맨 마지막 항목을 추출합니다.
+
+```javascript
+const numbers = [10, 20, 30, 40];
+
+const value = numbers.pop();
+console.log(value); //40
+console.log(numbers); //[10, 20, 30]
+```
+
+
+
+### _11. join
+
+`join` 은 배열 안의 값들을 문자열 형태로 합쳐줍니다.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+console.log(array.join()); // 1,2,3,4,5
+console.log(array.join(' ')); // 1 2 3 4 5
+console.log(array.join(', ')); // 1, 2, 3, 4, 5
+```
+
