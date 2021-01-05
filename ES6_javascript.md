@@ -562,6 +562,21 @@ console.log(sum); //3
 
 위 코드의 reduce 에서 사용한 콜백함수에서는 추가 파라미터로 index 와 array 를 받아왔습니다. index 는 현재 처리하고 있는 항목이 몇번째인지 가르키고, array 는 현재 처리하고 있는 배열 자신을 의미합니다.
 
+문자의 갯수도 구할수 있다.
+```javascript
+const alphabets = ['a','a','a','b','c','c','d','e'];
+const counts = alphabets.reduce((acc, current) => {
+ if(acc[current]){
+  acc[current] += 1;
+ }else{
+  acc[current] = 1;
+ }
+ return acc;
+},{} //비어있는 객체로 설정)
+
+console.log(counts); // 
+```
+
 
 
 퀴즈!!
