@@ -655,7 +655,7 @@ chicken.print();
 ```
 
 # spread 와 rest
-##spread
+## spread
 
 ```javascript
 const slime = {
@@ -686,11 +686,11 @@ console.log(animals);
 console.log(anotherAnimals);
 ```
 
-##rest
+## rest
 rest는 생김새는 spread 랑 비슷한데, 역할이 매우 다릅니다.
 rest는 객체, 배열, 그리고 함수의 파라미터에서 사용이 가능합니다.
 
-##_01 객체에서의 rest
+### _01 객체에서의 rest
 ```javascript
 const purpleCuteSlime = {
   name: '슬라임',
@@ -723,7 +723,7 @@ console.log(attribute);  //cute
 console.log(slime); //{name:슬라임}
 ```
 
-##_01 함수 파라미터에서의 rest
+### _01 함수 파라미터에서의 rest
 ```javascript
 function sum(...rest) {
   return rest.reduce((acc, current) => acc + current, 0);
