@@ -653,3 +653,82 @@ chicken.addBrands('BBQ');
 pizza.print();
 chicken.print();
 ```
+
+# spread 와 rest
+##spread
+
+```javascript
+const slime = {
+  name: '슬라임'
+};
+
+const cuteSlime = {
+  ...slime,
+  attribute: 'cute'
+};
+
+const purpleCuteSlime = {
+  ...cuteSlime,
+  color: 'purple'
+};
+
+console.log(slime);
+console.log(cuteSlime);
+console.log(purpleCuteSlime);
+```
+
+spread 연산자는 배열에서도 사용 할 수 있습니다.
+
+```javascript
+const animals = ['개', '고양이', '참새'];
+const anotherAnimals = [...animals, '비둘기'];
+console.log(animals);
+console.log(anotherAnimals);
+```
+
+##rest
+rest는 생김새는 spread 랑 비슷한데, 역할이 매우 다릅니다.
+rest는 객체, 배열, 그리고 함수의 파라미터에서 사용이 가능합니다.
+
+##_01 객체에서의 rest
+```javascript
+const purpleCuteSlime = {
+  name: '슬라임',
+  attribute: 'cute',
+  color: 'purple'
+};
+
+const { color, ...rest } = purpleCuteSlime;
+console.log(color);  //purple
+console.log(rest);  //{name:슬라임, attrubute:cute}
+```
+
+rest 는 객체와 배열에서 사용 할 때는 이렇게 비구조화 할당 문법과 함께 사용됩니다. 
+주로 사용 할때는 위와 같이 rest 라는 키워드를 사용하게 되는데요, 추출한 값의 이름이 꼭 rest 일 필요는 없습니다.
+이어서, attribute 까지 없앤 새로운 객체를 만들고 싶다면 이렇게 해주면 되겠죠.
+
+```javascript
+const purpleCuteSlime = {
+  name: '슬라임',
+  attribute: 'cute',
+  color: 'purple'
+};
+
+const { color, ...cuteSlime } = purpleCuteSlime;
+console.log(color); //purple
+console.log(cuteSlime); //{name:슬라임, attrubute:cute}
+
+const { attribute, ...slime } = cuteSlime;
+console.log(attribute);  //cute
+console.log(slime); //{name:슬라임}
+```
+
+##_01 함수 파라미터에서의 rest
+```javascript
+function sum(...rest) {
+  return rest.reduce((acc, current) => acc + current, 0);
+}
+
+const result = sum(1, 2, 3, 4, 5, 6);
+console.log(result); // 21
+```
