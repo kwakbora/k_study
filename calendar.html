@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>gugudan</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="robots" content="ALL">
+<meta property="og:type" content="website">
+<style>
+.dan_wrap:after{content:'';display:block;clear:both}
+.dan_wrap .dan{float:left;width:150px;}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<h1>javascript로 구구단 만들기</h1>
+
+	</div>
+<script type="text/javascript">
+		document.write('<div class="dan_wrap">')
+
+		for(var i = 1; i <=9; i++){
+			if(i%2==1){
+				if(i===7){
+					document.write('<div class="dan">')
+					document.write('<h2>' + i + '단 </h2>');
+
+					for(var j = 1; j<=9; j++){
+						if(j%2==1){
+						document.write(i + ' X ' + j + ' = ' + i*j + '<br>');
+						}
+					}
+					document.write('</div>')
+				}
+			}
+		}
+
+		document.write('</div>')
+
+
+</script>
+</body>
+</html>
