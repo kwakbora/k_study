@@ -2,43 +2,55 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>gugudan</title>
+<title>calendar</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="robots" content="ALL">
 <meta property="og:type" content="website">
+<script type="text/javascript" src="./calendar.js"></script>
 <style>
-.dan_wrap:after{content:'';display:block;clear:both}
-.dan_wrap .dan{float:left;width:150px;}
+.inp_data{border:1px solid #ccc;text-align:center;padding:5px 10px;cursor:pointer;width:100px}
+.chku_calendar{width:480px}
+.chku_mth{padding:10px 0;text-align:center;background:#98a0b3;color:#fff}
+.chku_mth [class^="calendar-btn-"]{margin:0 10px;overflow:hidden;font-size:0}
+.calendar-btn-prev-mon:after{content:'<';font-size:20px;display:inline-block;color:#fff}
+.calendar-btn-next-mon:after{content:'>';font-size:20px;display:inline-block;color:#fff}
+.calendar{table-layout:fixed;border-collapse:collapse;border-spacing:0;width:100%}
+.calendar tr th,.calendar tr td{font-size:12px;border:1px solid #ccc;}
+.calendar tr th{text-align:center}
+.calendar td a{text-align:left;text-decoration:none;color:#000;display:block;padding:5px;height:60px;position:relative}
+.calendar td a:hover{background:#4c5467;color:#fff}
 </style>
 </head>
 <body>
 	<div id="wrap">
-		<h1>javascript로 구구단 만들기</h1>
+		<h1>javascript로 캘린더 만들기</h1>
 
+		<input type="text" class="inp_data" id="inpFromData" vlaue="2021-03-12" placeholder="2021-03-12" /> ~
+		<input type="text" class="inp_data" id="inpToData" vlaue="2021-03-13" placeholder="2021-03-13" />
+
+		<div id="calendarWrap" class="chku_calendar">
+			<div class="chku_mth">
+				<a href="#" class="calendar-btn-prev-mon">이전</a>
+				2020년 12월
+				<a href="#" class="calendar-btn-next-mon">다음</a>
+			</div>
+			<table class="calendar">
+				<thead>
+					<tr>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th>토</th>
+						<th>일</th>
+					</tr>
+				</thead>
+				<tbody id="calendarBody" class="calendar_body"></tbody>
+			</table>
+
+		</div>
 	</div>
-<script type="text/javascript">
-		document.write('<div class="dan_wrap">')
-
-		for(var i = 1; i <=9; i++){
-			if(i%2==1){
-				if(i===7){
-					document.write('<div class="dan">')
-					document.write('<h2>' + i + '단 </h2>');
-
-					for(var j = 1; j<=9; j++){
-						if(j%2==1){
-						document.write(i + ' X ' + j + ' = ' + i*j + '<br>');
-						}
-					}
-					document.write('</div>')
-				}
-			}
-		}
-
-		document.write('</div>')
-
-
-</script>
 </body>
 </html>
