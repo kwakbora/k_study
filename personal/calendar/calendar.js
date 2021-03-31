@@ -13,14 +13,19 @@ class Calendar{
         const _this = this;
 
         //달력 테이블 만들기
-        const today = new Date();
-        const Nowmonth = today.getMonth() + 1;
+       // _this.today = new Date();
+        //_this.Nowmonth = today.getMonth() + 1;
 
-        const calendarId = 'calendar' + _this.inputId.slice(-1);
+        _this.calendarId = 'calendar' + _this.inputId.slice(-1);
 
-        const calendarBody = document.getElementById('CalendarBody');
+        const div = document.createElement('div');
+        div.setAttribute('class','chku_calendar');
+        div.setAttribute('id',_this.calendarId);
+        document.getElementById(_this.inputId).after(div);
 
-        for(i = 0; i<6; i++){
+        //const calendarBody = document.getElementById('CalendarBody');
+
+        /*for(i = 0; i<6; i++){
             const $tr = document.createElement('tr');
             calendarBody.appendChild($tr);
 
@@ -33,7 +38,7 @@ class Calendar{
                 $td.appendChild($a);
 
             }
-        }
+        }*/
 
     }//create
 
@@ -42,8 +47,10 @@ class Calendar{
         const _this = this;
         const inputVal = document.getElementById(_this.inputId).value;
         const inputDate = inputVal.split("-");
-        
-       document.getElementById('calendar1').classList.toggle('active');
+
+       //document.getElementById(_this.calendarId).classList.toggle('active');
+
+       
        _this.create(inputVal);
     
     }
