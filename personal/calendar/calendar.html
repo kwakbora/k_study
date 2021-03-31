@@ -9,7 +9,8 @@
 <meta property="og:type" content="website">
 <style>
 .inp_data{border:1px solid #ccc;text-align:center;padding:5px 10px;cursor:pointer;width:100px}
-.chku_calendar{width:480px}
+.chku_calendar{display:none;width:480px}
+.chku_calendar.active{display:block}
 .chku_mth{padding:10px 0;text-align:center;background:#98a0b3;color:#fff}
 .chku_mth [class^="calendar-btn-"]{margin:0 10px;overflow:hidden;font-size:0}
 .calendar-btn-prev-mon:after{content:'<';font-size:20px;display:inline-block;color:#fff}
@@ -25,10 +26,10 @@
 	<div id="wrap">
 		<h1>javascript로 캘린더 만들기</h1>
 
-		<input type="text" class="inp_data" id="inpFromData" vlaue="2021-03-12" placeholder="2021-03-12" /> ~
-		<input type="text" class="inp_data" id="inpToData" vlaue="2021-03-13" placeholder="2021-03-13" />
+		<input type="text" class="inp_data" id="inpFromData1" value="2021-03-12" placeholder="2021-03-12" /> ~
+		<input type="text" class="inp_data" id="inpToData2" value="2021-03-13" placeholder="2021-03-13" />
 
-		<div id="calendarWrap" class="chku_calendar">
+		<div id="calendar1" class="chku_calendar">
 			<div class="chku_mth">
 				<a href="#" class="calendar-btn-prev-mon">이전</a>
 				2020년 12월
@@ -46,11 +47,18 @@
 						<th>일</th>
 					</tr>
 				</thead>
-				<tbody id="calendarBody" class="calendar_body"></tbody>
+				<tbody id="CalendarBody" class="calendar_body"></tbody>
 			</table>
 
 		</div>
 	</div>
 	<script type="text/javascript" src="./calendar.js"></script>
+	<script>
+		var calendarList1 = new Calendar('2021-03-12','inpFromData1');
+		calendarList1.create();
+
+		var calendarList2 = new Calendar('2021-03-13','inpToData2');
+		calendarList2.create();
+	</script>
 </body>
 </html>
