@@ -18,6 +18,7 @@ class Calendar{
 		this.firstDateDay = this.firstDate.getDay();
 		this.lastDate = new Date(this.year, this.month + 1, 0);
 		this.lastDate = this.lastDate.getDate();
+        
 
         const _this = this;
         document.getElementById(_this.inputId).addEventListener('click',function(){
@@ -49,10 +50,9 @@ class Calendar{
         _this.firstDate = new Date(_this.year, _this.month, 1);
 		_this.firstDateDay = _this.firstDate.getDay();
 		_this.lastDate = new Date(_this.year, _this.month + 1, 0);
-		_this.lastDate = _this.lastDate.getDate();
+		_this.lastDateD = _this.lastDate.getDate();
 
-
-        _this.trlength = Math.ceil((_this.lastDate + _this.firstDateDay) / 7);
+        _this.trlength = Math.ceil((_this.lastDateD + _this.firstDateDay) / 7);
 
         const div = document.createElement('div');
         div.setAttribute('class','chku_calendar');
@@ -63,7 +63,7 @@ class Calendar{
         document.getElementById(_this.calendarId).appendChild(caledarHeader);
         caledarHeader.setAttribute('class','chku_mth');
         caledarHeader.innerHTML = '<a href="#" class="calendar-btn-prev-mon">이전</a>' +
-        '2020년 12월' + '<a href="#" class="calendar-btn-next-mon">다음</a>';
+         _this.year + '년' + _this.nowMonth + '월' + '<a href="#" class="calendar-btn-next-mon">다음</a>';
         
         const table = document.createElement('table');
         document.getElementById(_this.calendarId).appendChild(table);
@@ -76,11 +76,11 @@ class Calendar{
         const tbody = document.createElement('tbody');
         thead.after(tbody);
 
-       for(i=0; i <_this.trlength; i++){
+       for(var i=0; i <_this.trlength; i++){
             const $tr = document.createElement('tr');
             tbody.appendChild($tr);
 
-           /* for(j = 0; j<7; j++){
+           for(var j = 0; j<7; j++){
                 const $a  = document.createElement('a');
                 $a.setAttribute('href','#none');
 
@@ -88,7 +88,7 @@ class Calendar{
                 $tr.appendChild($td);
                 $td.appendChild($a);
 
-            }*/
+            }
         }
 
 
