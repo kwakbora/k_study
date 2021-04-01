@@ -39,7 +39,7 @@ class Calendar{
         _this.nowDateY = _this.nowDate[0];
         _this.nowDateM = _this.nowDate[1];
         _this.nowDateD = _this.nowDate[2];
-        _this.today = new Date(_this.nowDateY,_this.nowDateM,_this.nowDateD);
+        //_this.today = new Date(_this.nowDateY,_this.nowDateM,_this.nowDateD);
 
         _this.year = _this.today.getFullYear();
 		_this.month = _this.today.getMonth();
@@ -48,9 +48,10 @@ class Calendar{
 		_this.today = new Date(_this.year, _this.month, _this.date);
 
         _this.firstDate = new Date(_this.year, _this.month, 1);
-		_this.firstDateDay = _this.firstDate.getDay();
+		_this.firstDateDay = _this.firstDate.getDay() - 1; //요일출력
 		_this.lastDate = new Date(_this.year, _this.month + 1, 0);
 		_this.lastDateD = _this.lastDate.getDate();
+        _this.d = 1;
 
         _this.trlength = Math.ceil((_this.lastDateD + _this.firstDateDay) / 7);
 
@@ -85,8 +86,27 @@ class Calendar{
                 $a.setAttribute('href','#none');
 
                 const $td = document.createElement('td');
+                const $cell = document.createTextNode(_this.d);
+
                 $tr.appendChild($td);
-                $td.appendChild($a);
+                
+                if(i === 0){
+                    if(j >= _this.firstDateDay){
+                        $td.appendChild($a);
+                        $a.appendChild($cell);
+                        _this.d++;
+                    }
+                }else if(i === _this.trlength - 1){
+                    if(_this.d <= _this.lastDateD){
+                        $td.appendChild($a);
+                        $a.appendChild($cell);
+                        _this.d++;
+                    }
+                }else{
+                    $td.appendChild($a);
+                    $a.appendChild($cell);
+                    _this.d++;
+                }
 
             }
         }
