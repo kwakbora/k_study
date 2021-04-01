@@ -76,7 +76,7 @@ class Calendar{
         const tbody = document.createElement('tbody');
         thead.after(tbody);
 
-       for(i = 0; i <_this.trlength; i++){
+       for(i=0; i <_this.trlength; i++){
             const $tr = document.createElement('tr');
             tbody.appendChild($tr);
 
