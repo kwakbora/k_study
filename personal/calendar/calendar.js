@@ -89,6 +89,14 @@ class Calendar{
                 const $cell = document.createTextNode(_this.d);
 
                 $tr.appendChild($td);
+
+                const dayDate = new Date(_this.year, _this.month, _this.d),
+                      nowDay = dayDate.getDay();
+
+                //주말 컬러체크
+                const weekendName = fnWeekend(nowDay);
+                $td.setAttribute("class",weekendName);
+
                 
                 if(i === 0){
                     if(j >= _this.firstDateDay){
@@ -128,7 +136,17 @@ class Calendar{
        
     
     }
+}
 
+function fnWeekend(weekend){
+    let weekendName = '';
+    if(weekend === 0){
+        weekendName = 'sun';
+    }
+    if(weekend === 6){
+        weekendName = 'sat';
+    }
+    return weekendName;
 }
 
 
