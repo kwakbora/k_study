@@ -29,15 +29,38 @@
 		<h1>javascript로 캘린더 만들기</h1>
 
 		<input type="text" class="inp_data" id="inpFromData1" value="2021-03-12" placeholder="2021-03-12" /> ~
-		<input type="text" class="inp_data" id="inpToData2" value="2021-03-13" placeholder="2021-03-13" />
+		<input type="text" class="inp_data" id="inpToData2" value="2021-04-12" placeholder="2021-04-12" />
+		<div id="calendar1" class="chku_calendar" style="display:none;">
+			<div class="chku_mth">
+				<a href="#" class="calendar-btn-prev-mon">이전</a>
+				2020년 12월
+				<a href="#" class="calendar-btn-next-mon">다음</a>
+			</div>
+			<table class="calendar">
+				<thead>
+					<tr>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th>토</th>
+						<th>일</th>
+					</tr>
+				</thead>
+				<tbody id="CalendarBody" class="calendar_body"></tbody>
+			</table>
+
+		</div><!-- chku_calendar -->
+
 	</div>
 	<script type="text/javascript" src="./calendar.js"></script>
 	<script>
 		var calendarList1 = new Calendar('2021-03-12','inpFromData1');
-		calendarList1.create();
+		//calendarList1.create();
 
-		var calendarList2 = new Calendar('2021-03-13','inpToData2');
-		calendarList2.create();
+		var calendarList2 = new Calendar('2021-04-12','inpToData2');
+		//calendarList2.create();
 	</script>
 </body>
 </html>

@@ -21,14 +21,22 @@ class Calendar{
         
 
         const _this = this;
+        let chk = 0;
+
         document.getElementById(_this.inputId).addEventListener('click',function(){
-            _this.CalendarOpen();
+            if( chk === 0){
+                _this.CalendarOpen();
+                chk = 1;
+            }
         });
+
         
     }
     create(nowDate){
         const _this = this;
-        _this.calendarId = 'calendar' + _this.inputId.slice(-1);
+        //_this.calendarId = 'calendar' + _this.inputId.slice(-1);
+
+        _this.calendarId = document.getElementById('calendar1');
         
         if(nowDate !== undefined){
 			_this.nowDate = nowDate;
@@ -39,7 +47,7 @@ class Calendar{
         _this.nowDateY = _this.nowDate[0];
         _this.nowDateM = _this.nowDate[1];
         _this.nowDateD = _this.nowDate[2];
-        //_this.today = new Date(_this.nowDateY,_this.nowDateM,_this.nowDateD);
+        _this.today = new Date(_this.nowDateY,_this.nowDateM,_this.nowDateD);
 
         _this.year = _this.today.getFullYear();
 		_this.month = _this.today.getMonth();
@@ -55,33 +63,15 @@ class Calendar{
 
         _this.trlength = Math.ceil((_this.lastDateD + _this.firstDateDay) / 7);
 
-        const div = document.createElement('div');
-        div.setAttribute('class','chku_calendar');
-        div.setAttribute('id',_this.calendarId);
-        document.getElementById(_this.inputId).after(div);
+        console.log(_this.lastDateD)
 
-        const caledarHeader = document.createElement('div');
-        document.getElementById(_this.calendarId).appendChild(caledarHeader);
-        caledarHeader.setAttribute('class','chku_mth');
-        caledarHeader.innerHTML = '<a href="#" class="calendar-btn-prev-mon">이전</a>' +
-         _this.year + '년' + _this.nowMonth + '월' + '<a href="#" class="calendar-btn-next-mon">다음</a>';
-        
-        const table = document.createElement('table');
-        document.getElementById(_this.calendarId).appendChild(table);
-        table.setAttribute('class','calendar');
+        const tbody = document.getElementById('CalendarBody');
 
-        const thead = document.createElement('thead');
-        table.appendChild(thead);
-        thead.innerHTML = '<tr><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th><th>일</th></tr>';
-
-        const tbody = document.createElement('tbody');
-        thead.after(tbody);
-
-       for(var i=0; i <_this.trlength; i++){
+        for(var i=0; i <_this.trlength; i++){
             const $tr = document.createElement('tr');
             tbody.appendChild($tr);
 
-           for(var j = 0; j<7; j++){
+          for(var j = 0; j<7; j++){
                 const $a  = document.createElement('a');
                 $a.setAttribute('href','#none');
 
@@ -124,16 +114,16 @@ class Calendar{
 
     //달력 열기
     CalendarOpen(){
+
         const _this = this;
         const inputVal = document.getElementById(_this.inputId).value;
+        const calenderWrap = document.getElementById('calendar1');
         //const inputDate = inputVal.split("-");
 
-        if(document.getElementById(_this.calendarId) === null){
-            _this.create(inputVal);
-        }
+        _this.create(_this.nowDate);
 
-       document.getElementById(_this.calendarId).classList.toggle('active');
-       
+
+        calenderWrap.style.display = "block"
     
     }
 }
