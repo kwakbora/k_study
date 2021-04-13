@@ -34,7 +34,6 @@ class Calendar{
     }
     create(nowDate){
         const _this = this;
-        //_this.calendarId = 'calendar' + _this.inputId.slice(-1);
 
         _this.calendarId = document.getElementById('calendar1');
         
@@ -51,7 +50,6 @@ class Calendar{
 
         _this.year = _this.today.getFullYear();
 		_this.month = _this.today.getMonth();
-		_this.nowMonth = _this.today.getMonth() + 1;
 		_this.date = _this.today.getDate();
 		_this.today = new Date(_this.year, _this.month, _this.date);
 
@@ -63,9 +61,10 @@ class Calendar{
 
         _this.trlength = Math.ceil((_this.lastDateD + _this.firstDateDay) / 7);
 
-        console.log(_this.lastDateD)
-
         const tbody = document.getElementById('CalendarBody');
+        const caledarName = document.getElementById('calName');
+
+        caledarName.innerHTML = _this.nowDateY + '년 ' + _this.nowDateM + '월';
 
         for(var i=0; i <_this.trlength; i++){
             const $tr = document.createElement('tr');
