@@ -22,6 +22,13 @@
 .calendar td a:hover{background:#4c5467;color:#fff}
 .calendar td.sat a{color:blue}
 .calendar td.sun a{color:red}
+
+#map {
+  height: 150px;
+  width: 70px;
+  background: linear-gradient(blue, green);
+  touch-action: pinch-zoom;
+}
 </style>
 </head>
 <body>
@@ -52,6 +59,8 @@
 			</table>
 
 		</div><!-- chku_calendar -->
+
+		<div id="map"></div>
 
 	</div>
 	<script type="text/javascript" src="./calendar.js"></script>
